@@ -31,6 +31,7 @@ function Home({
           setValiButton(false);
         }}
       ></input>
+
       <button
         className="btn btn-outline btn-accent"
         style={{ marginLeft: "10px", borderRadius: "10px" }}
@@ -54,7 +55,7 @@ function Home({
         className="input input-bordered input-secondary w-full max-w-xs"
         type="text"
         value={valiButton ? "" : null}
-        placeholder="yasınızı giriniz"
+        placeholder="Yasınızı giriniz"
         onChange={(e) => {
           setInput(e.target.value);
           setValiButton(false);
@@ -91,7 +92,7 @@ function Home({
       ))}
       <br />
       <br />
-      <h1 className="text-3xl font-bold underline mb-5 text-pink-500">
+      <h1 className="text-3xl font-bold mb-5 text-pink-500">
         Aileye Ekleme Yap
       </h1>
 

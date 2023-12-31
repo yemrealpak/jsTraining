@@ -2,6 +2,8 @@
 import "./App.css";
 import { useState } from "react";
 import Home from "./components/Home";
+import Counter from "./components/Counter";
+import ExampleInput from "./components/ExampleInput";
 
 function App() {
   const [name, setName] = useState("Yunus");
@@ -21,6 +23,8 @@ function App() {
         family={family}
         setFamily={setFamily}
       />
+      <Counter />
+      <ExampleInput />
     </>
   );
 }
