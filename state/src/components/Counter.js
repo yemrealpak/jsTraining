@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-function Counter() {
+import { useState, useEffect } from "react";
+function Counter({ pageTimer, setPageTimer }) {
   const [count, setCount] = useState(0);
 
   const arttır = (cb) => {
@@ -15,6 +15,15 @@ function Counter() {
     }, 500);
   };
 
+  useEffect(() => {
+    console.log("///////////////// useEffect");
+    console.log(pageTimer);
+    const Interval = setInterval(() => {
+      setPageTimer({ ...pageTimer, counter: pageTimer.counter + 1 });
+    }, 1001);
+
+    return () => clearInterval(Interval);
+  });
   return (
     <div className="mx-auto text-center mb-10">
       <h1 className="text-3xl">{count}</h1>

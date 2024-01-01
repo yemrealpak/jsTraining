@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Input, Tooltip } from "antd";
-function ExampleInput() {
+function ExampleInput({ pageTimer, setPageTimer }) {
   const [input, setInput] = useState({ name: "", surname: "" });
   const [buttonInput, setButtonInput] = useState({ name: "", surname: "" });
   const handleInput = (e) => {
@@ -15,6 +15,12 @@ function ExampleInput() {
 
   useEffect(() => {
     console.log("///////////////// useEffect");
+    console.log(pageTimer);
+    const Interval = setInterval(() => {
+      setPageTimer({ ...pageTimer, input: pageTimer.input + 1 });
+    }, 1000);
+
+    return () => clearInterval(Interval);
   });
   return (
     <div className="mx-auto text-center mb-10">

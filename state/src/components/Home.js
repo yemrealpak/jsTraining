@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input, Tooltip } from "antd";
 import { InfoCircleOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Flex } from "antd";
@@ -13,9 +13,19 @@ function Home({
   setInput,
   family,
   setFamily,
+  pageTimer,
+  setPageTimer,
 }) {
   const [valiButton, setValiButton] = useState(false);
+  useEffect(() => {
+    console.log("///////////////// useEffect");
+    console.log(pageTimer);
+    const Interval = setInterval(() => {
+      setPageTimer({ ...pageTimer, home: pageTimer.home + 1 });
+    }, 999);
 
+    return () => clearInterval(Interval);
+  });
   return (
     <div className="App mt-10">
       <h1>Selam {name}</h1>
