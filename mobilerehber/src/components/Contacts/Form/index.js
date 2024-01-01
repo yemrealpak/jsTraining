@@ -1,18 +1,34 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Form({ form, setForm }) {
+const defaultFormButton = {
+  name: "",
+  number: "",
+};
+
+function Form({ setContacts, contacts }) {
   const [formButton, setFormButton] = useState({ name: "", number: "" });
   const handleSubmit = (e) => {
-    console.log([e.target.name]);
-    console.log(e.target.value);
     setFormButton({ ...formButton, [e.target.name]: e.target.value });
-    console.log(formButton);
-    e.preventDefault();
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+
+    if (formButton.name === "" || formButton.number === "") {
+      alert("Lütfen isim ve numara alanlarını doldurun");
+      return false;
+    }
+    console.log(formButton);
+    setContacts([...contacts, formButton]);
+  };
+
+  useEffect(() => {
+    setFormButton(defaultFormButton);
+  }, [contacts]);
+
   return (
-    <div className="flex flex-col items-center">
+    <form className="flex flex-col items-center" onSubmit={submit}>
       <div className="flex flex-row justify-center text-center mt-5 gap-5">
         <input
           name="name"
@@ -50,17 +66,10 @@ function Form({ form, setForm }) {
           </div>
         )}
       </div>
-      <button
-        className="btn btn-info mt-5"
-        type="submit"
-        onClick={() => {
-          setForm(formButton);
-          setFormButton({ name: "", number: "" });
-        }}
-      >
+      <button className="btn btn-info mt-5" type="submit">
         Kaydet
       </button>
-    </div>
+    </form>
   );
 }
 

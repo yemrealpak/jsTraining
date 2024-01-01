@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import List from "./List";
 import Form from "./Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Contacts() {
-  const [form, setForm] = useState({ name: "", number: "" });
-
-  const [formArray, setFormArray] = useState([]);
+function Contacts({ isVisible }) {
+  const [contacts, setContacts] = useState([
+    { name: "Ahmet", number: "123" },
+    { name: "Mehmet", number: "456" },
+  ]);
 
   useEffect(() => {
-    setFormArray([form, ...formArray]);
-  }, [form]);
+    console.log("contacts", contacts);
+  }, [contacts]);
 
   return (
     <div className="flex flex-col gap-5 mt-5">
-      <List form={formArray} />
-      <Form form={form} setForm={setForm} />
+      {isVisible.list && <List contacts={contacts} />}
+      {isVisible.add && <Form contacts={contacts} setContacts={setContacts} />}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Header() {
+function Header({ setIsVisible }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="bg-gray-900">
@@ -28,39 +28,51 @@ function Header() {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-              Company
+            <span className="ml-2 text-xl font-bold tracking-wide text-blue-500 uppercase">
+              simBank
             </span>
           </a>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>
               <a
                 href="/"
+                onClick={(e) => {
+                  setIsVisible({ home: true, add: false, list: false });
+                  e.preventDefault();
+                }}
                 aria-label="Our product"
                 title="Our product"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-blue-500"
               >
-                Product
+                Ana Sayfa
               </a>
             </li>
             <li>
               <a
                 href="/"
+                onClick={(e) => {
+                  setIsVisible({ home: false, add: true, list: false });
+                  e.preventDefault();
+                }}
                 aria-label="Our product"
                 title="Our product"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-blue-500"
               >
-                Features
+                Numara Ekle
               </a>
             </li>
             <li>
               <a
                 href="/"
+                onClick={(e) => {
+                  setIsVisible({ home: false, add: false, list: true });
+                  e.preventDefault();
+                }}
                 aria-label="Product pricing"
                 title="Product pricing"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-blue-500"
               >
-                Pricing
+                Liste
               </a>
             </li>
             <li>
@@ -68,9 +80,9 @@ function Header() {
                 href="/"
                 aria-label="About us"
                 title="About us"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium cursor-not-allowed tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
               >
-                About us
+                Hakkımızda
               </a>
             </li>
           </ul>
@@ -78,11 +90,11 @@ function Header() {
             <li>
               <a
                 href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
               >
-                Sign up
+                Kayıt Ol
               </a>
             </li>
           </ul>
