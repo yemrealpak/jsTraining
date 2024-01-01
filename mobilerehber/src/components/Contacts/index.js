@@ -15,7 +15,7 @@ function Contacts({ isVisible }) {
 
   return (
     <div className="flex flex-col gap-5 mt-5">
-      {isVisible.list && <List contacts={contacts} />}
+      {isVisible.list && <List contacts={contacts} setContacts={setContacts} />}
       {isVisible.add && <Form contacts={contacts} setContacts={setContacts} />}
     </div>
   );
